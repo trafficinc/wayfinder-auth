@@ -1,0 +1,23 @@
+{
+    "name": "wayfinder/auth",
+    "description": "Authentication module for the Wayfinder framework.",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "wayfinder/core": "^0.1"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/trafficinc/wayfinder-core"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Modules\\Auth\\": ""
+        }
+    }
+}
