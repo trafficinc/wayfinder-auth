@@ -37,7 +37,7 @@ ob_start();
             This dashboard is intentionally generic. App-specific features like projects, tasks, billing, or reporting should live in your application or in separate feature modules.
         </p>
         <p class="subtitle" style="margin:0;">
-            Keep `wayfinder/auth` focused on authentication concerns: login, registration, guest/auth redirects, logout, and a simple signed-in landing page.
+            Keep `trafficinc/stackmint-auth` focused on authentication concerns: login, registration, guest/auth redirects, logout, and a simple signed-in landing page.
         </p>
     </div>
 </main>
