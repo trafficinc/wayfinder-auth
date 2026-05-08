@@ -5,9 +5,9 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
-        "wayfinder/core": "^1.0"
+        "wayfinder/core": "0.0.1"
     },
-    "minimum-stability": "stable",
+    "minimum-stability": "dev-main",
     "prefer-stable": true,
     "repositories": [
         {
