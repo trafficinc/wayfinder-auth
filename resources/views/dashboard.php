@@ -7,39 +7,46 @@
 ob_start();
 ?>
 <main>
-    <div class="card" style="max-width:760px;margin:0 auto 24px;">
-        <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:16px;">
-            <div>
-                <h1>Dashboard</h1>
-                <p class="subtitle">Welcome back. You are signed in and your auth module is working.</p>
+    <section class="dashboard-grid">
+        <article class="card">
+            <div class="dashboard-header">
+                <div>
+                    <div class="eyebrow">Authenticated</div>
+                    <h1>Dashboard</h1>
+                    <p class="subtitle">You are signed in and the auth module is working.</p>
+                </div>
+                <form method="post" action="/logout">
+                    <?= $form->csrfField() ?>
+                    <button type="submit">Log out</button>
+                </form>
             </div>
-            <form method="post" action="/logout" style="margin:0;">
-                <?= $form->csrfField() ?>
-                <button type="submit">Log out</button>
-            </form>
-        </div>
 
-        <?php if (is_string($status) && $status !== ''): ?>
-            <div class="flash"><?= htmlspecialchars($status, ENT_QUOTES, 'UTF-8') ?></div>
-        <?php endif; ?>
+            <?php if (is_string($status) && $status !== ''): ?>
+                <div class="flash"><?= htmlspecialchars($status, ENT_QUOTES, 'UTF-8') ?></div>
+            <?php endif; ?>
 
-        <dl>
-            <dt>Name</dt>
-            <dd><?= htmlspecialchars((string) ($user['name'] ?? 'Unknown'), ENT_QUOTES, 'UTF-8') ?></dd>
-            <dt>Email</dt>
-            <dd><?= htmlspecialchars((string) ($user['email'] ?? ''), ENT_QUOTES, 'UTF-8') ?></dd>
-        </dl>
-    </div>
+            <dl>
+                <div class="data-row">
+                    <dt>Name</dt>
+                    <dd><?= htmlspecialchars((string) ($user['name'] ?? 'Unknown'), ENT_QUOTES, 'UTF-8') ?></dd>
+                </div>
+                <div class="data-row">
+                    <dt>Email</dt>
+                    <dd><?= htmlspecialchars((string) ($user['email'] ?? ''), ENT_QUOTES, 'UTF-8') ?></dd>
+                </div>
+            </dl>
+        </article>
 
-    <div class="card" style="max-width:760px;margin:0 auto;">
-        <h2 style="margin:0 0 16px;">Module Scope</h2>
-        <p class="subtitle" style="margin:0 0 12px;">
-            This dashboard is intentionally generic. App-specific features like projects, tasks, billing, or reporting should live in your application or in separate feature modules.
-        </p>
-        <p class="subtitle" style="margin:0;">
-            Keep `trafficinc/stackmint-auth` focused on authentication concerns: login, registration, guest/auth redirects, logout, and a simple signed-in landing page.
-        </p>
-    </div>
+        <aside class="card">
+            <h2>Module scope</h2>
+            <p class="subtitle">This page stays intentionally generic so each host app can replace it with its own authenticated landing page.</p>
+            <ul class="scope-list">
+                <li>Login and registration views are package-owned.</li>
+                <li>The host app controls the final authenticated route.</li>
+                <li>Product-specific dashboards belong in the application or feature modules.</li>
+            </ul>
+        </aside>
+    </section>
 </main>
 <?php
 $bodyContent = ob_get_clean();
